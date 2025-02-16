@@ -1,0 +1,62 @@
+import mongoose from "mongoose";
+
+const packageSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+  duration: {
+    type: String,
+    required: true,
+  },
+  isDiscountValid: {
+    type: Boolean,
+    default: false,
+  },
+  discountPercentage: {
+    type: String,
+    default: "0",
+  },
+  discountValidTill: {
+    type: Date,
+    default: new Date().setMonth(new Date().getMonth() + 1),
+  },
+  features: {
+    type: [String],
+    default: [""],
+  },
+  airline: {
+    type: String,
+    default: "PIA",
+  },
+  description: {
+    type: String,
+    default: "",
+  },
+  departureDate: {
+    type: Date,
+    required: true,
+  },
+  arrivalDate: {
+    type: Date,
+    required: true,
+  },
+  departureCity: {
+    type: String,
+    default: "KHI",
+  },
+  hotels: {
+    type: [String],
+  },
+  categoryId: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Category",
+  },
+});
+
+export const Package = mongoose.model("Package", packageSchema);
