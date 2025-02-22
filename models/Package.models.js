@@ -1,3 +1,4 @@
+import { type } from "express/lib/response";
 import mongoose from "mongoose";
 
 const packageSchema = new mongoose.Schema({
@@ -27,8 +28,32 @@ const packageSchema = new mongoose.Schema({
     default: new Date().setMonth(new Date().getMonth() + 1),
   },
   features: {
-    type: [String],
-    default: [""],
+    type: {
+      tickets: {
+        type: Boolean,
+        default: false,
+      },
+      visa: {
+        type: Boolean,
+        default: false,
+      },
+      transport: {
+        type: Boolean,
+        default: false,
+      },
+      food: {
+        type: Boolean,
+        default: false,
+      },
+      hotels: {
+        type: Boolean,
+        default: false,
+      },
+      gift: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
   airline: {
     type: String,
@@ -52,6 +77,7 @@ const packageSchema = new mongoose.Schema({
   },
   hotels: {
     type: [String],
+    default: [],
   },
   categoryId: {
     type: mongoose.Schema.ObjectId,
