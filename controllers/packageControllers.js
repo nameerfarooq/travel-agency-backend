@@ -15,7 +15,7 @@ export const createPackage = async (req, res) => {
 };
 export const getAllPackages = async (req, res) => {
   try {
-    const packages = await Package.find();
+    const packages = await Package.find().populate("categoryId");
     res.status(200).json({ packages });
   } catch (error) {
     console.log(error);
