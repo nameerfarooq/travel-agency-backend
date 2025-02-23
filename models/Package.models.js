@@ -1,4 +1,3 @@
-import { type } from "express/lib/response";
 import mongoose from "mongoose";
 
 const packageSchema = new mongoose.Schema({
@@ -8,10 +7,6 @@ const packageSchema = new mongoose.Schema({
     unique: true,
   },
   price: {
-    type: String,
-    required: true,
-  },
-  duration: {
     type: String,
     required: true,
   },
@@ -75,12 +70,16 @@ const packageSchema = new mongoose.Schema({
     type: String,
     default: "KHI",
   },
+  landingCity: {
+    type: String,
+    default: "JED",
+  },
   hotels: {
     type: [String],
     default: [],
   },
   categoryId: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
   },
 });

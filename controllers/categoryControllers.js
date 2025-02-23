@@ -26,3 +26,12 @@ export const getAllCategories = async (req, res) => {
     res.status(500).json({ message: "internal server error" });
   }
 };
+export const deleteCategory = async (req, res) => {
+  try {
+    await Category.findByIdAndDelete(req.params.id);
+    res.json({ message: "Category deleted!" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "internal server error" });
+  }
+};
